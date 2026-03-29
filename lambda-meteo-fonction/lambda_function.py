@@ -18,7 +18,7 @@ def safe_get(value, default=0):
 # ===== LAMBDA =====
 def lambda_handler(event, context):
 
-    api_key = "e25a3737154e7b56b35d3f08ed448160"
+    api_key = ""
     bucket_name = "meteo-pipeline-ouz-badara"
 
     cities = ["Dakar", "Thies", "Saint-Louis", "Bamako", "Abidjan", "Ouagadougou"]
