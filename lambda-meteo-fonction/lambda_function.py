@@ -1,4 +1,5 @@
 import json
+import os
 import urllib.request
 import boto3
 import time
@@ -18,7 +19,7 @@ def safe_get(value, default=0):
 # ===== LAMBDA =====
 def lambda_handler(event, context):
 
-    api_key = ""
+    api_key = os.environ["OPENWEATHER_API_KEY"]
     bucket_name = "meteo-pipeline-ouz-badara"
 
     cities = ["Dakar", "Thies", "Saint-Louis", "Bamako", "Abidjan", "Ouagadougou"]
@@ -61,7 +62,7 @@ def lambda_handler(event, context):
                 "humidite": humidite,
                 "pression": pression,
 
-                # METRICS SUPPLEMENTAIRES
+                #  METRICS SUPPLEMENTAIRES
                 "vent_vitesse": safe_get(data["wind"]["speed"]),
                 "latitude": safe_get(data["coord"]["lat"]),
                 "longitude": safe_get(data["coord"]["lon"]),
